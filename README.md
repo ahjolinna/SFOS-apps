@@ -36,99 +36,121 @@ on the Jolla Phone 2026.
 
 | App | What it is |
 |---|---|
-| [Bumblebee](harbour-bumblebee/) | Ampparit.com news headline reader (Finnish news) |
-| [Kaantaja](harbour-kaantaja/) | On-device AI translator (Qwen2.5 models, text stays on the phone) |
-| [Keino](harbour-keino/) | On-device AI chat (Qwen2.5 models with llama.cpp) |
-| [Kilta](harbour-kilta/) | Discord client: servers, direct messages, notifications |
-| [Koski](harbour-koski/) | Anime catalog (AniList) with optional torrent streaming |
-| [Kuuma](harbour-kuuma/) | Adult video catalog client. **18+ only** |
-| [NextStop](harbour-nextstop/) | Offline public-transport timetables for Finnish cities |
-| [Pelitila](harbour-pelitila/) | Game launcher and performance monitor, with game mode and an optional HUD |
-| [Putki](harbour-putki/) | YouTube client |
-| [Retki](harbour-retki/) | Classic games player (libretro emulators) with RomM support |
-| [Ruutu](harbour-ruutu/) | Manga reader (MangaDex) |
-| [SailRadar](harbour-sailradar/) | Live flight tracker (ADS-B) on a map |
-| [Tuike](harbour-tuike/) | Twitch client with chat |
-| [Virta](harbour-virta/) | Stremio add-on client with optional torrent streaming |
+| [Acta](harbour-acta/) | Ampparit.com news headline reader (Finnish news) |
+| [Arena](harbour-arena/) | Game launcher and performance monitor, with game mode and an optional HUD |
+| [Calor](harbour-calor/) | Adult video catalog client. **18+ only** |
+| [Collegium](harbour-collegium/) | Discord client: servers, direct messages, notifications |
+| [Fluxus](harbour-fluxus/) | Stremio add-on client with optional torrent streaming |
+| [Interpres](harbour-interpres/) | On-device AI translator (Qwen2.5 models, text stays on the phone) |
+| [Ludus](harbour-ludus/) | Classic games player (libretro emulators) with RomM support |
+| [Oraculum](harbour-oraculum/) | On-device AI chat (Qwen2.5 models with llama.cpp) |
+| [Scintilla](harbour-scintilla/) | Twitch client with chat |
+| [Statio](harbour-statio/) | Offline public-transport timetables for Finnish cities |
+| [Tabula](harbour-tabula/) | Manga reader (MangaDex) |
+| [Torrens](harbour-torrens/) | Anime catalog (AniList) with optional torrent streaming |
+| [Tubus](harbour-tubus/) | YouTube client |
+| [Volatus](harbour-volatus/) | Live flight tracker (ADS-B) on a map |
 
-### Bumblebee
+### Acta
 Headlines from Ampparit.com: top stories, most read, most voted and latest, with
 category filters and search. Articles open in an in-app web view.
 
-### Kaantaja
-Translates text on the phone with a downloaded Qwen2.5 Instruct model (1.5B or 3B).
-Nothing is sent to a server. The model download is large, and translation is slower
-than online services.
+### Arena
+Collects native and Android games into one launcher and shows CPU, temperature,
+battery and memory while you play, with session reports afterwards. Game mode can
+turn on Do Not Disturb, the silent profile, keep the screen on and lock brightness.
+- `harbour-arena-helper` (optional): CPU performance and battery-saver profiles
+  during games. Runs a small root service.
+- `harbour-arena-hud` (optional, needs **Patchmanager**): an on-screen overlay with
+  FPS, CPU, GPU, temperature and battery over any app, Android games included.
+  Activate "Arena performance HUD" in Patchmanager afterwards.
 
-### Keino
-A chat assistant running fully on the phone with llama.cpp and Qwen2.5 Instruct
-models. Private and offline, but small models make mistakes and answers take time.
+### Calor
+**Adults only (18+).** Browses public catalogs of adult video sites and plays videos
+with hardware decoding.
 
-### Kilta
+### Collegium
 Unofficial Discord client: servers, channels, direct messages, pictures, GIFs,
 attachments, replies and notifications. No voice. **Third-party Discord clients are
 against Discord's terms of service and can get an account flagged or banned: use it
 at your own risk.**
 
-### Koski
-Browse anime from AniList. With an optional torrent source pack it plays torrent
-streams on the phone (libtorrent + libmpv with software HEVC decoding). Make sure what
-you stream is legal where you live.
+### Fluxus
+A client for Stremio add-ons: Cinemeta catalogs, optional Torrentio, and playback of
+HTTP or torrent streams with libmpv. Make sure what you stream is legal where you live.
 
-### Kuuma
-**Adults only (18+).** Browses public catalogs of adult video sites and plays videos
-with hardware decoding.
+### Interpres
+Translates text on the phone with a downloaded Qwen2.5 Instruct model (1.5B or 3B).
+Nothing is sent to a server. The model download is large, and translation is slower
+than online services.
 
-### NextStop
-Download a city pack (HSL, Nysse, Föli, Waltti cities and more), see nearby stops by
-GPS and the next departures offline. Live times need a Digitransit API key of your
-own. Not a journey planner or a ticket app.
-
-### Pelitila
-Collects native and Android games into one launcher and shows CPU, temperature,
-battery and memory while you play, with session reports afterwards. Game mode can
-turn on Do Not Disturb, the silent profile, keep the screen on and lock brightness.
-- `harbour-pelitila-helper` (optional): CPU performance and battery-saver profiles
-  during games. Runs a small root service.
-- `harbour-pelitila-hud` (optional, needs **Patchmanager**): an on-screen overlay with
-  FPS, CPU, GPU, temperature and battery over any app, Android games included.
-  Activate "Pelitila performance HUD" in Patchmanager afterwards.
-
-### Putki
-Unofficial YouTube client: home, Shorts, channels, playlists, history and downloads.
-Can use the YouTube session from the Sailfish Browser. yt-dlp is optional (downloaded
-from Settings, not bundled).
-
-### Retki
+### Ludus
 A player for classic console games with built-in emulators: NES, SNES, Mega Drive,
 Master System, Game Gear, Game Boy, Game Boy Color, Game Boy Advance, PC Engine and
 PlayStation. Touch controls you can move and resize, Bluetooth controllers, save
 states, cheats, box art, and a client for a self-hosted RomM server with save sync.
-- `harbour-retki-cores` (required): the emulators for the classic systems. Install
-  it together with `harbour-retki`:
+- `harbour-ludus-cores` (required): the emulators for the classic systems. Install
+  it together with `harbour-ludus`:
   ```
-  devel-su pkcon install-local harbour-retki-0.5.2-1.aarch64.rpm harbour-retki-cores-0.5.2-1.aarch64.rpm
+  devel-su pkcon install-local harbour-ludus-0.6.0-1.aarch64.rpm harbour-ludus-cores-0.6.0-1.aarch64.rpm
   ```
-- `harbour-retki-psp` (optional): PlayStation Portable support (PPSSPP, GPU rendered).
+- `harbour-ludus-psp` (optional): PlayStation Portable support (PPSSPP, GPU rendered).
 
 **No games are included: play only games you own.** Some bundled emulators (snes9x,
 Genesis Plus GX) are licensed for non-commercial use only.
 
-### Ruutu
+### Oraculum
+A chat assistant running fully on the phone with llama.cpp and Qwen2.5 Instruct
+models. Private and offline, but small models make mistakes and answers take time.
+
+### Scintilla
+Unofficial Twitch client: browse and search live channels, hardware-decoded playback
+(720p/1080p) and chat. The login token is kept in Sailfish Secrets.
+
+### Statio
+Download a city pack (HSL, Nysse, Föli, Waltti cities and more), see nearby stops by
+GPS and the next departures offline. Live times need a Digitransit API key of your
+own. Not a journey planner or a ticket app.
+
+### Tabula
 Browse and search MangaDex, keep a library, download chapters and read them.
 
-### SailRadar
+### Torrens
+Browse anime from AniList. With an optional torrent source pack it plays torrent
+streams on the phone (libtorrent + libmpv with software HEVC decoding). Make sure what
+you stream is legal where you live.
+
+### Tubus
+Unofficial YouTube client: home, Shorts, channels, playlists, history and downloads.
+Can use the YouTube session from the Sailfish Browser. yt-dlp is optional (downloaded
+from Settings, not bundled).
+
+### Volatus
 Nearby aircraft on an OpenStreetMap view from community ADS-B data (adsb.lol, with
 OpenSky Network as a fallback): details, routes, search, favourites and emergency
 squawks. **Not for navigation.**
 
-### Tuike
-Unofficial Twitch client: browse and search live channels, hardware-decoded playback
-(720p/1080p) and chat. The login token is kept in Sailfish Secrets.
+## Renamed apps
 
-### Virta
-A client for Stremio add-ons: Cinemeta catalogs, optional Torrentio, and playback of
-HTTP or torrent streams with libmpv. Make sure what you stream is legal where you live.
+In November 2026 the apps got Latin names (and new icons). The new packages
+replace the old ones when installed; settings and data start fresh.
+
+| Old name | New name |
+|---|---|
+| Bumblebee | Acta |
+| Pelitila | Arena |
+| Kuuma | Calor |
+| Kilta | Collegium |
+| Virta | Fluxus |
+| Kaantaja | Interpres |
+| Retki | Ludus |
+| Keino | Oraculum |
+| Tuike | Scintilla |
+| NextStop | Statio |
+| Ruutu | Tabula |
+| Koski | Torrens |
+| Putki | Tubus |
+| SailRadar | Volatus |
 
 ## Notes
 
