@@ -26,8 +26,8 @@ Jolla or with the services they connect to.
    devel-su pkcon install-local ~/Downloads/harbour-<app>-<version>.aarch64.rpm
    ```
 
-   Install an app and its add-on packages (`-helper`, `-hud`, `-psp`) in the same
-   command. To update, install the newer RPM the same way.
+   Install an app and its add-on packages (`-cores`, `-helper`, `-hud`, `-psp`) in
+   the same command. To update, install the newer RPMs the same way.
 
 Other phones on Sailfish OS 5 (aarch64) may work too, but the apps are only tested
 on the Jolla Phone 2026.
@@ -104,6 +104,11 @@ A player for classic console games with built-in emulators: NES, SNES, Mega Driv
 Master System, Game Gear, Game Boy, Game Boy Color, Game Boy Advance, PC Engine and
 PlayStation. Touch controls you can move and resize, Bluetooth controllers, save
 states, cheats, box art, and a client for a self-hosted RomM server with save sync.
+- `harbour-retki-cores` (required): the emulators for the classic systems. Install
+  it together with `harbour-retki`:
+  ```
+  devel-su pkcon install-local harbour-retki-0.5.2-1.aarch64.rpm harbour-retki-cores-0.5.2-1.aarch64.rpm
+  ```
 - `harbour-retki-psp` (optional): PlayStation Portable support (PPSSPP, GPU rendered).
 
 **No games are included: play only games you own.** Some bundled emulators (snes9x,
@@ -131,4 +136,20 @@ HTTP or torrent streams with libmpv. Make sure what you stream is legal where yo
   connect to. They can stop working whenever those services change.
 - Several apps turn off Sailfish OS app sandboxing (Sailjail) because they need
   local stream proxies, other apps' data or game controllers.
-- These are RPM packages only; no source code is published here.
+- These are RPM packages only; no source code is in this repository.
+
+## Source code
+
+The apps are **source-available**: every RPM here has a matching source RPM
+(`.src.rpm`), attached to this repository's
+[releases](https://github.com/ahjolinna/SFOS-apps/releases). A source RPM contains
+the app's code, the shared code it uses, and the sources of the third-party
+libraries and emulators it bundles, so it rebuilds on its own in the Sailfish OS
+SDK:
+
+```
+rpmbuild --rebuild harbour-<app>-<version>-1.src.rpm
+```
+
+The third-party parts keep their own licences (GPL, LGPL, MPL, and the
+non-commercial licences of snes9x and Genesis Plus GX); see each package.
