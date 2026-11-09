@@ -46,18 +46,24 @@ h2 { font-size: 1.5rem; margin: 48px 0 16px; letter-spacing: -.01em; }
 .chip { background: var(--chip); border-radius: 6px; padding: 1px 8px; font-size: .8rem; color: var(--text); }
 .chip.warn { background: var(--warn-bg); color: var(--warn-text); font-weight: 600; }
 .desc { margin: 14px 0 16px; flex: 1; }
-.dl { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; text-decoration: none;
-  border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; color: var(--text); font-weight: 600; overflow-wrap: anywhere; }
-.dl span { font-weight: 400; font-size: .8rem; color: var(--muted); }
-.dl.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
-.dl.primary span { color: inherit; opacity: .8; }
-.dl:hover { border-color: var(--accent); }
-.addons { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
-.addons li { border-top: 1px solid var(--line); padding-top: 10px; }
-.addons .dl { font-size: .9rem; padding: 6px 10px; }
-.addons p { margin: 6px 0 0; font-size: .9rem; color: var(--muted); }
-.req { margin-left: 8px; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
-.req.required { color: var(--warn-text); background: var(--warn-bg); padding: 1px 6px; border-radius: 4px; }
+.pkgs { display: grid; gap: 12px; }
+.pkg + .pkg { border-top: 1px solid var(--line); padding-top: 12px; }
+.pkgname { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: .85rem; color: var(--muted); }
+.pkgname code { overflow-wrap: anywhere; }
+.note { margin: 4px 0 0; font-size: .9rem; color: var(--muted); }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.btn { flex: 1 1 140px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 8px 16px; border-radius: 12px; text-decoration: none; font-weight: 600;
+  color: var(--text); background: var(--chip); border: 1px solid var(--line); transition: filter .15s, border-color .15s; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn span { display: flex; flex-direction: column; line-height: 1.2; }
+.btn small { font-weight: 400; font-size: .75rem; opacity: .8; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.08); }
+.req { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
+  border: 1px solid var(--line); padding: 0 6px; border-radius: 4px; }
+.req.required { color: var(--warn-text); background: var(--warn-bg); border-color: transparent; }
 .steps { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 8px 24px 8px 44px; }
 .steps li { margin: 12px 0; }
 pre { background: var(--chip); border-radius: 10px; padding: 12px 14px; overflow-x: auto; font-size: .88rem; }
@@ -99,8 +105,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Acta</h3><p class="tag">News headlines</p><p class="meta">v0.3.0 </p></div>
       </header>
       <p class="desc">Headlines from Ampparit.com (Finnish news): top stories, most read, most voted and latest, with category filters and search. Articles open in an in-app web view.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-acta/harbour-acta-0.3.0-1.aarch64.rpm" download>Download <span>harbour-acta-0.3.0-1.aarch64.rpm · 0.1 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-acta</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-acta/harbour-acta-0.3.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 99 KB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-acta-0.3.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="arena">
       <header>
@@ -108,8 +113,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Arena</h3><p class="tag">Game launcher and performance monitor</p><p class="meta">v0.5.0 </p></div>
       </header>
       <p class="desc">Collects native and Android games into one launcher and shows CPU, temperature, battery and memory while you play, with session reports afterwards. Game mode can turn on Do Not Disturb, the silent profile, keep the screen on and lock brightness.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-0.5.0-1.aarch64.rpm" download>Download <span>harbour-arena-0.5.0-1.aarch64.rpm · 0.1 MB</span></a></div>
-      <ul class="addons"><li><a class="dl" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-helper-0.5.0-1.noarch.rpm" download>harbour-arena-helper-0.5.0-1.noarch.rpm <span>0.0 MB</span></a><span class="req optional">optional</span><p>CPU performance and battery-saver profiles during games (a small root service).</p></li><li><a class="dl" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-hud-0.5.0-1.noarch.rpm" download>harbour-arena-hud-0.5.0-1.noarch.rpm <span>0.0 MB</span></a><span class="req optional">optional</span><p>On-screen overlay with FPS, CPU, GPU, temperature and battery over any app. Needs Patchmanager: activate “Arena performance HUD” afterwards.</p></li></ul>
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-arena</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-0.5.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.1 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-arena-0.5.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div><div class="pkg"><div class="pkgname"><code>harbour-arena-helper</code><span class="req optional">optional</span></div><p class="note">CPU performance and battery-saver profiles during games (a small root service).</p><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-helper-0.5.0-1.noarch.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 12 KB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-arena-0.5.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM (Arena's)<small>0.1 MB</small></span></a></div></div><div class="pkg"><div class="pkgname"><code>harbour-arena-hud</code><span class="req optional">optional</span></div><p class="note">On-screen overlay with FPS, CPU, GPU, temperature and battery over any app. Needs Patchmanager: activate “Arena performance HUD” afterwards.</p><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-hud-0.5.0-1.noarch.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 12 KB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-arena-0.5.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM (Arena's)<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="calor">
       <header>
@@ -117,8 +121,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Calor</h3><p class="tag">Adult video catalog client</p><p class="meta">v0.2.0 <span class="chip warn">18+ only</span></p></div>
       </header>
       <p class="desc">Browses public catalogs of adult video sites and plays videos with hardware decoding.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-calor/harbour-calor-0.2.0-1.aarch64.rpm" download>Download <span>harbour-calor-0.2.0-1.aarch64.rpm · 0.2 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-calor</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-calor/harbour-calor-0.2.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-calor-0.2.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="collegium">
       <header>
@@ -126,8 +129,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Collegium</h3><p class="tag">Discord client</p><p class="meta">v0.8.0 <span class="chip ">Unofficial</span><span class="chip warn">Account risk</span></p></div>
       </header>
       <p class="desc">Servers, channels, direct messages, pictures, GIFs, attachments, replies and notifications. No voice. <strong>Third-party Discord clients are against Discord's terms of service and can get an account flagged or banned.</strong></p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-collegium/harbour-collegium-0.8.0-1.aarch64.rpm" download>Download <span>harbour-collegium-0.8.0-1.aarch64.rpm · 0.2 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-collegium</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-collegium/harbour-collegium-0.8.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-collegium-0.8.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.2 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="fluxus">
       <header>
@@ -135,8 +137,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Fluxus</h3><p class="tag">Stremio add-on client</p><p class="meta">v0.4.0 </p></div>
       </header>
       <p class="desc">Cinemeta catalogs, optional Torrentio, and playback of HTTP or torrent streams with libmpv. Make sure what you stream is legal where you live.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-fluxus/harbour-fluxus-0.4.0-1.aarch64.rpm" download>Download <span>harbour-fluxus-0.4.0-1.aarch64.rpm · 4.9 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-fluxus</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-fluxus/harbour-fluxus-0.4.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 4.9 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-fluxus-0.4.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>31.0 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="interpres">
       <header>
@@ -144,8 +145,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Interpres</h3><p class="tag">On-device AI translator</p><p class="meta">v0.3.0 <span class="chip ">Offline</span></p></div>
       </header>
       <p class="desc">Translates text on the phone with a downloaded Qwen2.5 Instruct model (1.5B or 3B). Nothing is sent to a server. The model download is large, and translation is slower than online services.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-interpres/harbour-interpres-0.3.0-1.aarch64.rpm" download>Download <span>harbour-interpres-0.3.0-1.aarch64.rpm · 0.7 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-interpres</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-interpres/harbour-interpres-0.3.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.7 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-interpres-0.3.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>6.0 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="ludus">
       <header>
@@ -153,8 +153,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Ludus</h3><p class="tag">Classic games player</p><p class="meta">v0.6.0 </p></div>
       </header>
       <p class="desc">Built-in emulators for NES, SNES, Mega Drive, Master System, Game Gear, Game Boy, Game Boy Color, Game Boy Advance, PC Engine and PlayStation. Movable, resizable touch controls, Bluetooth controllers, save states, cheats, box art, and a client for a self-hosted RomM server with save sync. <strong>No games are included: play only games you own.</strong> snes9x and Genesis Plus GX are licensed for non-commercial use only.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-0.6.0-1.aarch64.rpm" download>Download <span>harbour-ludus-0.6.0-1.aarch64.rpm · 0.3 MB</span></a></div>
-      <ul class="addons"><li><a class="dl" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-cores-0.6.0-1.aarch64.rpm" download>harbour-ludus-cores-0.6.0-1.aarch64.rpm <span>3.8 MB</span></a><span class="req required">required</span><p>The emulators for the classic systems. Install together with Ludus.</p></li><li><a class="dl" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-psp-0.6.0-1.aarch64.rpm" download>harbour-ludus-psp-0.6.0-1.aarch64.rpm <span>15.5 MB</span></a><span class="req optional">optional</span><p>PlayStation Portable support (PPSSPP, GPU rendered).</p></li></ul>
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-ludus</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-0.6.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.3 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-ludus-0.6.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.3 MB</small></span></a></div></div><div class="pkg"><div class="pkgname"><code>harbour-ludus-cores</code><span class="req required">required</span></div><p class="note">The emulators for the classic systems. Install together with Ludus.</p><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-cores-0.6.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 3.8 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-ludus-cores-0.6.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>38.4 MB</small></span></a></div></div><div class="pkg"><div class="pkgname"><code>harbour-ludus-psp</code><span class="req optional">optional</span></div><p class="note">PlayStation Portable support (PPSSPP, GPU rendered).</p><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-psp-0.6.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 15.5 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-ludus-psp-0.6.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>100.5 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="oraculum">
       <header>
@@ -162,8 +161,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Oraculum</h3><p class="tag">On-device AI chat</p><p class="meta">v0.2.0 <span class="chip ">Offline</span></p></div>
       </header>
       <p class="desc">A chat assistant running fully on the phone with llama.cpp and Qwen2.5 Instruct models. Private and offline, but small models make mistakes and answers take time.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-oraculum/harbour-oraculum-0.2.0-1.aarch64.rpm" download>Download <span>harbour-oraculum-0.2.0-1.aarch64.rpm · 0.9 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-oraculum</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-oraculum/harbour-oraculum-0.2.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.9 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-oraculum-0.2.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>6.0 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="scintilla">
       <header>
@@ -171,8 +169,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Scintilla</h3><p class="tag">Twitch client</p><p class="meta">v0.5.0 <span class="chip ">Unofficial</span></p></div>
       </header>
       <p class="desc">Browse and search live channels, hardware-decoded playback (720p/1080p) and chat. The login token is kept in Sailfish Secrets.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-scintilla/harbour-scintilla-0.5.0-1.aarch64.rpm" download>Download <span>harbour-scintilla-0.5.0-1.aarch64.rpm · 0.2 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-scintilla</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-scintilla/harbour-scintilla-0.5.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-scintilla-0.5.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.2 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="statio">
       <header>
@@ -180,8 +177,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Statio</h3><p class="tag">Offline transit timetables</p><p class="meta">v0.3.0 <span class="chip ">Finland</span></p></div>
       </header>
       <p class="desc">Download a city pack (HSL, Nysse, Föli, Waltti cities and more), see nearby stops by GPS and the next departures offline. Live times need a Digitransit API key of your own. Not a journey planner or a ticket app.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-statio/harbour-statio-0.3.0-1.aarch64.rpm" download>Download <span>harbour-statio-0.3.0-1.aarch64.rpm · 0.2 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-statio</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-statio/harbour-statio-0.3.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-statio-0.3.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="tabula">
       <header>
@@ -189,8 +185,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Tabula</h3><p class="tag">Manga reader</p><p class="meta">v0.2.0 </p></div>
       </header>
       <p class="desc">Browse and search MangaDex, keep a library, download chapters and read them.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-tabula/harbour-tabula-0.2.0-1.aarch64.rpm" download>Download <span>harbour-tabula-0.2.0-1.aarch64.rpm · 0.2 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-tabula</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-tabula/harbour-tabula-0.2.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-tabula-0.2.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="torrens">
       <header>
@@ -198,8 +193,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Torrens</h3><p class="tag">Anime catalog</p><p class="meta">v0.3.0 </p></div>
       </header>
       <p class="desc">Browse anime from AniList. With an optional torrent source pack it plays torrent streams on the phone (libtorrent + libmpv with software HEVC decoding). Make sure what you stream is legal where you live.</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-torrens/harbour-torrens-0.3.0-1.aarch64.rpm" download>Download <span>harbour-torrens-0.3.0-1.aarch64.rpm · 5.0 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-torrens</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-torrens/harbour-torrens-0.3.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 5.0 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-torrens-0.3.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>30.9 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="tubus">
       <header>
@@ -207,8 +201,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Tubus</h3><p class="tag">YouTube client</p><p class="meta">v0.4.0 <span class="chip ">Unofficial</span></p></div>
       </header>
       <p class="desc">Home, Shorts, channels, playlists, history and downloads. Can use the YouTube session from the Sailfish Browser. yt-dlp is optional (downloaded from Settings, not bundled).</p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-tubus/harbour-tubus-0.4.0-1.aarch64.rpm" download>Download <span>harbour-tubus-0.4.0-1.aarch64.rpm · 0.2 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-tubus</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-tubus/harbour-tubus-0.4.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-tubus-0.4.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.2 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="volatus">
       <header>
@@ -216,8 +209,7 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
         <div><h3>Volatus</h3><p class="tag">Live flight tracker</p><p class="meta">v1.6.0 </p></div>
       </header>
       <p class="desc">Nearby aircraft on an OpenStreetMap view from community ADS-B data (adsb.lol, with OpenSky Network as a fallback): details, routes, search, favourites and emergency squawks. <strong>Not for navigation.</strong></p>
-      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-volatus/harbour-volatus-1.6.0-1.aarch64.rpm" download>Download <span>harbour-volatus-1.6.0-1.aarch64.rpm · 0.2 MB</span></a></div>
-      
+      <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-volatus</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-volatus/harbour-volatus-1.6.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-volatus-1.6.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.2 MB</small></span></a></div></div></div>
     </article>
   </div>
 
