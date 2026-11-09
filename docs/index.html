@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SFOS apps</title>
+<meta name="description" content="Unofficial Sailfish OS 5 apps for the Jolla Phone 2026, made with AI. Ready-to-install RPMs and source RPMs.">
+<link rel="icon" href="icons/arena.png">
+<style>
+:root {
+  --bg: #f4f5f7; --surface: #ffffff; --text: #16181d; --muted: #5b6270; --line: #dfe2e8;
+  --accent: #0a6cbd; --accent-text: #ffffff; --warn-bg: #fff3d6; --warn-text: #7a4b00;
+  --chip: #eceff4; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1116; --surface: #171b22; --text: #e8eaee; --muted: #9aa3b2; --line: #272d38;
+    --accent: #4ea3ff; --accent-text: #08131f; --warn-bg: #3a2a08; --warn-text: #ffd27a;
+    --chip: #232934; --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--accent); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+.hero { padding: 56px 0 28px; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 12px; letter-spacing: -.02em; }
+.hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 46em; margin: 0; }
+.notice { background: var(--warn-bg); color: var(--warn-text); border-radius: 12px; padding: 16px 18px; margin: 24px 0 0; }
+.notice strong { color: inherit; }
+nav.apps { display: flex; flex-wrap: wrap; gap: 6px; margin: 28px 0 8px; }
+nav.apps a { display: flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line); color: var(--text); text-decoration: none; font-size: .95rem; }
+nav.apps a:hover { border-color: var(--accent); }
+nav.apps img { width: 28px; height: 28px; }
+h2 { font-size: 1.5rem; margin: 48px 0 16px; letter-spacing: -.01em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 16px; }
+.app { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; scroll-margin-top: 16px; }
+.app header { display: flex; gap: 16px; align-items: center; }
+.app header img { width: 72px; height: 72px; flex: none; }
+.app h3 { margin: 0; font-size: 1.3rem; }
+.app .tag { margin: 0; color: var(--muted); }
+.app .meta { margin: 4px 0 0; font-size: .85rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { background: var(--chip); border-radius: 6px; padding: 1px 8px; font-size: .8rem; color: var(--text); }
+.chip.warn { background: var(--warn-bg); color: var(--warn-text); font-weight: 600; }
+.desc { margin: 14px 0 16px; flex: 1; }
+.dl { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; text-decoration: none;
+  border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; color: var(--text); font-weight: 600; overflow-wrap: anywhere; }
+.dl span { font-weight: 400; font-size: .8rem; color: var(--muted); }
+.dl.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+.dl.primary span { color: inherit; opacity: .8; }
+.dl:hover { border-color: var(--accent); }
+.addons { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+.addons li { border-top: 1px solid var(--line); padding-top: 10px; }
+.addons .dl { font-size: .9rem; padding: 6px 10px; }
+.addons p { margin: 6px 0 0; font-size: .9rem; color: var(--muted); }
+.req { margin-left: 8px; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.req.required { color: var(--warn-text); background: var(--warn-bg); padding: 1px 6px; border-radius: 4px; }
+.steps { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 8px 24px 8px 44px; }
+.steps li { margin: 12px 0; }
+pre { background: var(--chip); border-radius: 10px; padding: 12px 14px; overflow-x: auto; font-size: .88rem; }
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 4px 20px; }
+footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <h1>Sailfish OS apps</h1>
+    <p class="lead">14 unofficial apps for <strong>Sailfish OS 5</strong>, made for the
+      <strong>Jolla Phone 2026</strong> (aarch64, Sailfish OS 5.2). Ready-to-install RPM packages,
+      with source RPMs for every one of them.</p>
+    <div class="notice"><strong>These apps were made with AI</strong> (Claude by Anthropic and Grok by xAI),
+      with a human testing them on a real Jolla Phone 2026. Some are well used and quite usable, others are
+      early or experimental: expect bugs and rough edges. <strong>Use at your own discretion.</strong>
+      They are not in the Jolla Store and are not affiliated with Jolla or the services they connect to.</div>
+    <nav class="apps" aria-label="Apps"><a href="#acta"><img src="icons/acta.png" width="40" height="40" alt="">Acta</a><a href="#arena"><img src="icons/arena.png" width="40" height="40" alt="">Arena</a><a href="#calor"><img src="icons/calor.png" width="40" height="40" alt="">Calor</a><a href="#collegium"><img src="icons/collegium.png" width="40" height="40" alt="">Collegium</a><a href="#fluxus"><img src="icons/fluxus.png" width="40" height="40" alt="">Fluxus</a><a href="#interpres"><img src="icons/interpres.png" width="40" height="40" alt="">Interpres</a><a href="#ludus"><img src="icons/ludus.png" width="40" height="40" alt="">Ludus</a><a href="#oraculum"><img src="icons/oraculum.png" width="40" height="40" alt="">Oraculum</a><a href="#scintilla"><img src="icons/scintilla.png" width="40" height="40" alt="">Scintilla</a><a href="#statio"><img src="icons/statio.png" width="40" height="40" alt="">Statio</a><a href="#tabula"><img src="icons/tabula.png" width="40" height="40" alt="">Tabula</a><a href="#torrens"><img src="icons/torrens.png" width="40" height="40" alt="">Torrens</a><a href="#tubus"><img src="icons/tubus.png" width="40" height="40" alt="">Tubus</a><a href="#volatus"><img src="icons/volatus.png" width="40" height="40" alt="">Volatus</a></nav>
+  </section>
+
+  <h2 id="install">Installing</h2>
+  <ol class="steps">
+    <li>Enable <strong>Developer mode</strong> on the phone (Settings → Developer tools), and allow
+      <strong>untrusted software</strong> (Settings → Untrusted software) if you install by tapping the file.</li>
+    <li>Download the app's RPM on the phone (and its add-on packages, if it has any).</li>
+    <li>Tap the file in the file manager, or in a terminal:
+      <pre><code>devel-su pkcon install-local ~/Downloads/harbour-&lt;app&gt;-&lt;version&gt;.aarch64.rpm</code></pre>
+      Install an app and its add-ons in the same command. To update, install the newer RPMs the same way.</li>
+  </ol>
+
+  <h2 id="apps">The apps</h2>
+  <div class="grid">
+    <article class="app" id="acta">
+      <header>
+        <img src="icons/acta.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Acta</h3><p class="tag">News headlines</p><p class="meta">v0.3.0 </p></div>
+      </header>
+      <p class="desc">Headlines from Ampparit.com (Finnish news): top stories, most read, most voted and latest, with category filters and search. Articles open in an in-app web view.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-acta/harbour-acta-0.3.0-1.aarch64.rpm" download>Download <span>harbour-acta-0.3.0-1.aarch64.rpm · 0.1 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="arena">
+      <header>
+        <img src="icons/arena.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Arena</h3><p class="tag">Game launcher and performance monitor</p><p class="meta">v0.5.0 </p></div>
+      </header>
+      <p class="desc">Collects native and Android games into one launcher and shows CPU, temperature, battery and memory while you play, with session reports afterwards. Game mode can turn on Do Not Disturb, the silent profile, keep the screen on and lock brightness.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-0.5.0-1.aarch64.rpm" download>Download <span>harbour-arena-0.5.0-1.aarch64.rpm · 0.1 MB</span></a></div>
+      <ul class="addons"><li><a class="dl" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-helper-0.5.0-1.noarch.rpm" download>harbour-arena-helper-0.5.0-1.noarch.rpm <span>0.0 MB</span></a><span class="req optional">optional</span><p>CPU performance and battery-saver profiles during games (a small root service).</p></li><li><a class="dl" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-hud-0.5.0-1.noarch.rpm" download>harbour-arena-hud-0.5.0-1.noarch.rpm <span>0.0 MB</span></a><span class="req optional">optional</span><p>On-screen overlay with FPS, CPU, GPU, temperature and battery over any app. Needs Patchmanager: activate “Arena performance HUD” afterwards.</p></li></ul>
+    </article>
+    <article class="app" id="calor">
+      <header>
+        <img src="icons/calor.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Calor</h3><p class="tag">Adult video catalog client</p><p class="meta">v0.2.0 <span class="chip warn">18+ only</span></p></div>
+      </header>
+      <p class="desc">Browses public catalogs of adult video sites and plays videos with hardware decoding.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-calor/harbour-calor-0.2.0-1.aarch64.rpm" download>Download <span>harbour-calor-0.2.0-1.aarch64.rpm · 0.2 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="collegium">
+      <header>
+        <img src="icons/collegium.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Collegium</h3><p class="tag">Discord client</p><p class="meta">v0.8.0 <span class="chip ">Unofficial</span><span class="chip warn">Account risk</span></p></div>
+      </header>
+      <p class="desc">Servers, channels, direct messages, pictures, GIFs, attachments, replies and notifications. No voice. <strong>Third-party Discord clients are against Discord's terms of service and can get an account flagged or banned.</strong></p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-collegium/harbour-collegium-0.8.0-1.aarch64.rpm" download>Download <span>harbour-collegium-0.8.0-1.aarch64.rpm · 0.2 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="fluxus">
+      <header>
+        <img src="icons/fluxus.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Fluxus</h3><p class="tag">Stremio add-on client</p><p class="meta">v0.4.0 </p></div>
+      </header>
+      <p class="desc">Cinemeta catalogs, optional Torrentio, and playback of HTTP or torrent streams with libmpv. Make sure what you stream is legal where you live.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-fluxus/harbour-fluxus-0.4.0-1.aarch64.rpm" download>Download <span>harbour-fluxus-0.4.0-1.aarch64.rpm · 4.9 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="interpres">
+      <header>
+        <img src="icons/interpres.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Interpres</h3><p class="tag">On-device AI translator</p><p class="meta">v0.3.0 <span class="chip ">Offline</span></p></div>
+      </header>
+      <p class="desc">Translates text on the phone with a downloaded Qwen2.5 Instruct model (1.5B or 3B). Nothing is sent to a server. The model download is large, and translation is slower than online services.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-interpres/harbour-interpres-0.3.0-1.aarch64.rpm" download>Download <span>harbour-interpres-0.3.0-1.aarch64.rpm · 0.7 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="ludus">
+      <header>
+        <img src="icons/ludus.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Ludus</h3><p class="tag">Classic games player</p><p class="meta">v0.6.0 </p></div>
+      </header>
+      <p class="desc">Built-in emulators for NES, SNES, Mega Drive, Master System, Game Gear, Game Boy, Game Boy Color, Game Boy Advance, PC Engine and PlayStation. Movable, resizable touch controls, Bluetooth controllers, save states, cheats, box art, and a client for a self-hosted RomM server with save sync. <strong>No games are included: play only games you own.</strong> snes9x and Genesis Plus GX are licensed for non-commercial use only.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-0.6.0-1.aarch64.rpm" download>Download <span>harbour-ludus-0.6.0-1.aarch64.rpm · 0.3 MB</span></a></div>
+      <ul class="addons"><li><a class="dl" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-cores-0.6.0-1.aarch64.rpm" download>harbour-ludus-cores-0.6.0-1.aarch64.rpm <span>3.8 MB</span></a><span class="req required">required</span><p>The emulators for the classic systems. Install together with Ludus.</p></li><li><a class="dl" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-psp-0.6.0-1.aarch64.rpm" download>harbour-ludus-psp-0.6.0-1.aarch64.rpm <span>15.5 MB</span></a><span class="req optional">optional</span><p>PlayStation Portable support (PPSSPP, GPU rendered).</p></li></ul>
+    </article>
+    <article class="app" id="oraculum">
+      <header>
+        <img src="icons/oraculum.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Oraculum</h3><p class="tag">On-device AI chat</p><p class="meta">v0.2.0 <span class="chip ">Offline</span></p></div>
+      </header>
+      <p class="desc">A chat assistant running fully on the phone with llama.cpp and Qwen2.5 Instruct models. Private and offline, but small models make mistakes and answers take time.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-oraculum/harbour-oraculum-0.2.0-1.aarch64.rpm" download>Download <span>harbour-oraculum-0.2.0-1.aarch64.rpm · 0.9 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="scintilla">
+      <header>
+        <img src="icons/scintilla.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Scintilla</h3><p class="tag">Twitch client</p><p class="meta">v0.5.0 <span class="chip ">Unofficial</span></p></div>
+      </header>
+      <p class="desc">Browse and search live channels, hardware-decoded playback (720p/1080p) and chat. The login token is kept in Sailfish Secrets.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-scintilla/harbour-scintilla-0.5.0-1.aarch64.rpm" download>Download <span>harbour-scintilla-0.5.0-1.aarch64.rpm · 0.2 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="statio">
+      <header>
+        <img src="icons/statio.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Statio</h3><p class="tag">Offline transit timetables</p><p class="meta">v0.3.0 <span class="chip ">Finland</span></p></div>
+      </header>
+      <p class="desc">Download a city pack (HSL, Nysse, Föli, Waltti cities and more), see nearby stops by GPS and the next departures offline. Live times need a Digitransit API key of your own. Not a journey planner or a ticket app.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-statio/harbour-statio-0.3.0-1.aarch64.rpm" download>Download <span>harbour-statio-0.3.0-1.aarch64.rpm · 0.2 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="tabula">
+      <header>
+        <img src="icons/tabula.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Tabula</h3><p class="tag">Manga reader</p><p class="meta">v0.2.0 </p></div>
+      </header>
+      <p class="desc">Browse and search MangaDex, keep a library, download chapters and read them.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-tabula/harbour-tabula-0.2.0-1.aarch64.rpm" download>Download <span>harbour-tabula-0.2.0-1.aarch64.rpm · 0.2 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="torrens">
+      <header>
+        <img src="icons/torrens.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Torrens</h3><p class="tag">Anime catalog</p><p class="meta">v0.3.0 </p></div>
+      </header>
+      <p class="desc">Browse anime from AniList. With an optional torrent source pack it plays torrent streams on the phone (libtorrent + libmpv with software HEVC decoding). Make sure what you stream is legal where you live.</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-torrens/harbour-torrens-0.3.0-1.aarch64.rpm" download>Download <span>harbour-torrens-0.3.0-1.aarch64.rpm · 5.0 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="tubus">
+      <header>
+        <img src="icons/tubus.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Tubus</h3><p class="tag">YouTube client</p><p class="meta">v0.4.0 <span class="chip ">Unofficial</span></p></div>
+      </header>
+      <p class="desc">Home, Shorts, channels, playlists, history and downloads. Can use the YouTube session from the Sailfish Browser. yt-dlp is optional (downloaded from Settings, not bundled).</p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-tubus/harbour-tubus-0.4.0-1.aarch64.rpm" download>Download <span>harbour-tubus-0.4.0-1.aarch64.rpm · 0.2 MB</span></a></div>
+      
+    </article>
+    <article class="app" id="volatus">
+      <header>
+        <img src="icons/volatus.png" width="86" height="86" alt="" loading="lazy">
+        <div><h3>Volatus</h3><p class="tag">Live flight tracker</p><p class="meta">v1.6.0 </p></div>
+      </header>
+      <p class="desc">Nearby aircraft on an OpenStreetMap view from community ADS-B data (adsb.lol, with OpenSky Network as a fallback): details, routes, search, favourites and emergency squawks. <strong>Not for navigation.</strong></p>
+      <div class="dls"><a class="dl primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-volatus/harbour-volatus-1.6.0-1.aarch64.rpm" download>Download <span>harbour-volatus-1.6.0-1.aarch64.rpm · 0.2 MB</span></a></div>
+      
+    </article>
+  </div>
+
+  <h2 id="notes">Good to know</h2>
+  <div class="cols">
+    <div class="box">
+      <p>Apps marked unofficial use public or undocumented interfaces of the services they connect to,
+        and can stop working whenever those services change.</p>
+      <p>Several apps turn off Sailfish OS app sandboxing (Sailjail) because they need local stream
+        proxies, other apps' data or game controllers.</p>
+      <p>Other Sailfish OS 5 phones (aarch64) may work too, but the apps are only tested on the Jolla Phone 2026.</p>
+    </div>
+    <div class="box" id="source">
+      <p><strong>Source-available.</strong> Every RPM has a matching source RPM in the
+        <a href="https://github.com/ahjolinna/SFOS-apps/releases">releases</a>. Each contains the app's code, the shared code it uses and
+        the sources of the bundled third-party libraries and emulators, and rebuilds on its own in the
+        Sailfish OS SDK:</p>
+      <pre><code>rpmbuild --rebuild harbour-&lt;app&gt;-&lt;version&gt;-1.src.rpm</code></pre>
+      <p>Third-party parts keep their own licences (GPL, LGPL, MPL, and the non-commercial licences of
+        snes9x and Genesis Plus GX).</p>
+    </div>
+  </div>
+
+  <footer>Packages and details: <a href="https://github.com/ahjolinna/SFOS-apps">github.com/ahjolinna/SFOS-apps</a></footer>
+</div>
+</body>
+</html>
