@@ -130,28 +130,6 @@ Nearby aircraft on an OpenStreetMap view from community ADS-B data (adsb.lol, wi
 OpenSky Network as a fallback): details, routes, search, favourites and emergency
 squawks. **Not for navigation.**
 
-## Renamed apps
-
-In November 2026 the apps got Latin names (and new icons). The new packages
-replace the old ones when installed; settings and data start fresh.
-
-| Old name | New name |
-|---|---|
-| Bumblebee | Acta |
-| Pelitila | Arena |
-| Kuuma | Calor |
-| Kilta | Collegium |
-| Virta | Fluxus |
-| Kaantaja | Interpres |
-| Retki | Ludus |
-| Keino | Oraculum |
-| Tuike | Scintilla |
-| NextStop | Statio |
-| Ruutu | Tabula |
-| Koski | Torrens |
-| Putki | Tubus |
-| SailRadar | Volatus |
-
 ## Notes
 
 - Apps marked unofficial use public or undocumented interfaces of the services they
