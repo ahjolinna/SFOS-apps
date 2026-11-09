@@ -10,13 +10,13 @@
 :root {
   --bg: #f4f5f7; --surface: #ffffff; --text: #16181d; --muted: #5b6270; --line: #dfe2e8;
   --accent: #0a6cbd; --accent-text: #ffffff; --warn-bg: #fff3d6; --warn-text: #7a4b00;
-  --chip: #eceff4; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.05);
+  --chip: #eceff4; --ok-bg: #e3f4e8; --ok-text: #1d5c33; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.05);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0e1116; --surface: #171b22; --text: #e8eaee; --muted: #9aa3b2; --line: #272d38;
     --accent: #4ea3ff; --accent-text: #08131f; --warn-bg: #3a2a08; --warn-text: #ffd27a;
-    --chip: #232934; --shadow: none;
+    --chip: #232934; --ok-bg: #12301d; --ok-text: #8fdcaa; --shadow: none;
   }
 }
 * { box-sizing: border-box; }
@@ -44,6 +44,10 @@ h2 { font-size: 1.5rem; margin: 48px 0 16px; letter-spacing: -.01em; }
 .app .tag { margin: 0; color: var(--muted); }
 .app .meta { margin: 4px 0 0; font-size: .85rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .chip { background: var(--chip); border-radius: 6px; padding: 1px 8px; font-size: .8rem; color: var(--text); }
+.chip.ok { background: var(--ok-bg); color: var(--ok-text); }
+.jail { margin: 0 0 16px; font-size: .9rem; padding: 8px 12px; border-radius: 10px; }
+.jail.ok { background: var(--ok-bg); color: var(--ok-text); }
+.jail.off { background: var(--warn-bg); color: var(--warn-text); }
 .chip.warn { background: var(--warn-bg); color: var(--warn-text); font-weight: 600; }
 .desc { margin: 14px 0 16px; flex: 1; }
 .pkgs { display: grid; gap: 12px; }
@@ -102,113 +106,127 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
     <article class="app" id="acta">
       <header>
         <img src="icons/acta.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Acta</h3><p class="tag">News headlines</p><p class="meta">v0.3.0 </p></div>
+        <div><h3>Acta</h3><p class="tag">News headlines</p><p class="meta">v0.3.0 <span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Headlines from Ampparit.com (Finnish news): top stories, most read, most voted and latest, with category filters and search. Articles open in an in-app web view.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, web view.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-acta</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-acta/harbour-acta-0.3.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 99 KB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-acta-0.3.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="arena">
       <header>
         <img src="icons/arena.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Arena</h3><p class="tag">Game launcher and performance monitor</p><p class="meta">v0.5.0 </p></div>
+        <div><h3>Arena</h3><p class="tag">Game launcher and performance monitor</p><p class="meta">v0.5.0 <span class="chip warn">Sandbox off</span></p></div>
       </header>
       <p class="desc">Collects native and Android games into one launcher and shows CPU, temperature, battery and memory while you play, with session reports afterwards. Game mode can turn on Do Not Disturb, the silent profile, keep the screen on and lock brightness.</p>
+      <p class="jail off"><strong>Sailjail: sandbox off</strong>, because it lists and launches Android games, whose shortcuts and icons the sandbox hides.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-arena</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-0.5.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.1 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-arena-0.5.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div><div class="pkg"><div class="pkgname"><code>harbour-arena-helper</code><span class="req optional">optional</span></div><p class="note">CPU performance and battery-saver profiles during games (a small root service).</p><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-helper-0.5.0-1.noarch.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 12 KB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-arena-0.5.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM (Arena's)<small>0.1 MB</small></span></a></div></div><div class="pkg"><div class="pkgname"><code>harbour-arena-hud</code><span class="req optional">optional</span></div><p class="note">On-screen overlay with FPS, CPU, GPU, temperature and battery over any app. Needs Patchmanager: activate “Arena performance HUD” afterwards.</p><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-arena/harbour-arena-hud-0.5.0-1.noarch.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 12 KB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-arena-0.5.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM (Arena's)<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="calor">
       <header>
         <img src="icons/calor.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Calor</h3><p class="tag">Adult video catalog client</p><p class="meta">v0.2.0 <span class="chip warn">18+ only</span></p></div>
+        <div><h3>Calor</h3><p class="tag">Adult video catalog client</p><p class="meta">v0.2.0 <span class="chip warn">18+ only</span><span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Browses public catalogs of adult video sites and plays videos with hardware decoding.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, audio.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-calor</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-calor/harbour-calor-0.2.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-calor-0.2.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="collegium">
       <header>
         <img src="icons/collegium.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Collegium</h3><p class="tag">Discord client</p><p class="meta">v0.8.0 <span class="chip ">Unofficial</span><span class="chip warn">Account risk</span></p></div>
+        <div><h3>Collegium</h3><p class="tag">Discord client</p><p class="meta">v0.8.0 <span class="chip ">Unofficial</span><span class="chip warn">Account risk</span><span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Servers, channels, direct messages, pictures, GIFs, attachments, replies and notifications. No voice. <strong>Third-party Discord clients are against Discord's terms of service and can get an account flagged or banned.</strong></p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, audio, web view, Sailfish Secrets.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-collegium</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-collegium/harbour-collegium-0.8.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-collegium-0.8.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.2 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="fluxus">
       <header>
         <img src="icons/fluxus.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Fluxus</h3><p class="tag">Stremio add-on client</p><p class="meta">v0.4.0 </p></div>
+        <div><h3>Fluxus</h3><p class="tag">Stremio add-on client</p><p class="meta">v0.4.0 <span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Cinemeta catalogs, optional Torrentio, and playback of HTTP or torrent streams with libmpv. Make sure what you stream is legal where you live.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, audio, memory card.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-fluxus</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-fluxus/harbour-fluxus-0.4.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 4.9 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-fluxus-0.4.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>31.0 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="interpres">
       <header>
         <img src="icons/interpres.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Interpres</h3><p class="tag">On-device AI translator</p><p class="meta">v0.3.0 <span class="chip ">Offline</span></p></div>
+        <div><h3>Interpres</h3><p class="tag">On-device AI translator</p><p class="meta">v0.3.0 <span class="chip ">Offline</span><span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Translates text on the phone with a downloaded Qwen2.5 Instruct model (1.5B or 3B). Nothing is sent to a server. The model download is large, and translation is slower than online services.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-interpres</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-interpres/harbour-interpres-0.3.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.7 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-interpres-0.3.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>6.0 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="ludus">
       <header>
         <img src="icons/ludus.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Ludus</h3><p class="tag">Classic games player</p><p class="meta">v0.6.0 </p></div>
+        <div><h3>Ludus</h3><p class="tag">Classic games player</p><p class="meta">v0.6.0 <span class="chip warn">Sandbox off</span></p></div>
       </header>
       <p class="desc">Built-in emulators for NES, SNES, Mega Drive, Master System, Game Gear, Game Boy, Game Boy Color, Game Boy Advance, PC Engine and PlayStation. Movable, resizable touch controls, Bluetooth controllers, save states, cheats, box art, and a client for a self-hosted RomM server with save sync. <strong>No games are included: play only games you own.</strong> snes9x and Genesis Plus GX are licensed for non-commercial use only.</p>
+      <p class="jail off"><strong>Sailjail: sandbox off</strong>, because it reads game controllers from /dev/input, and games can be in any folder or on a memory card.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-ludus</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-0.6.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.3 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-ludus-0.6.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.3 MB</small></span></a></div></div><div class="pkg"><div class="pkgname"><code>harbour-ludus-cores</code><span class="req required">required</span></div><p class="note">The emulators for the classic systems. Install together with Ludus.</p><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-cores-0.6.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 3.8 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-ludus-cores-0.6.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>38.4 MB</small></span></a></div></div><div class="pkg"><div class="pkgname"><code>harbour-ludus-psp</code><span class="req optional">optional</span></div><p class="note">PlayStation Portable support (PPSSPP, GPU rendered).</p><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-ludus/harbour-ludus-psp-0.6.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 15.5 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-ludus-psp-0.6.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>100.5 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="oraculum">
       <header>
         <img src="icons/oraculum.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Oraculum</h3><p class="tag">On-device AI chat</p><p class="meta">v0.2.0 <span class="chip ">Offline</span></p></div>
+        <div><h3>Oraculum</h3><p class="tag">On-device AI chat</p><p class="meta">v0.2.0 <span class="chip ">Offline</span><span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">A chat assistant running fully on the phone with llama.cpp and Qwen2.5 Instruct models. Private and offline, but small models make mistakes and answers take time.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, Documents, Downloads, Pictures.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-oraculum</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-oraculum/harbour-oraculum-0.2.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.9 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-oraculum-0.2.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>6.0 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="scintilla">
       <header>
         <img src="icons/scintilla.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Scintilla</h3><p class="tag">Twitch client</p><p class="meta">v0.5.0 <span class="chip ">Unofficial</span></p></div>
+        <div><h3>Scintilla</h3><p class="tag">Twitch client</p><p class="meta">v0.5.0 <span class="chip ">Unofficial</span><span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Browse and search live channels, hardware-decoded playback (720p/1080p) and chat. The login token is kept in Sailfish Secrets.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, audio, Sailfish Secrets.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-scintilla</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-scintilla/harbour-scintilla-0.5.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-scintilla-0.5.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.2 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="statio">
       <header>
         <img src="icons/statio.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Statio</h3><p class="tag">Offline transit timetables</p><p class="meta">v0.3.0 <span class="chip ">Finland</span></p></div>
+        <div><h3>Statio</h3><p class="tag">Offline transit timetables</p><p class="meta">v0.3.0 <span class="chip ">Finland</span><span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Download a city pack (HSL, Nysse, Föli, Waltti cities and more), see nearby stops by GPS and the next departures offline. Live times need a Digitransit API key of your own. Not a journey planner or a ticket app.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, location.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-statio</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-statio/harbour-statio-0.3.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-statio-0.3.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="tabula">
       <header>
         <img src="icons/tabula.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Tabula</h3><p class="tag">Manga reader</p><p class="meta">v0.2.0 </p></div>
+        <div><h3>Tabula</h3><p class="tag">Manga reader</p><p class="meta">v0.2.0 <span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Browse and search MangaDex, keep a library, download chapters and read them.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, Documents, Downloads.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-tabula</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-tabula/harbour-tabula-0.2.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-tabula-0.2.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.1 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="torrens">
       <header>
         <img src="icons/torrens.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Torrens</h3><p class="tag">Anime catalog</p><p class="meta">v0.3.0 </p></div>
+        <div><h3>Torrens</h3><p class="tag">Anime catalog</p><p class="meta">v0.3.0 <span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Browse anime from AniList. With an optional torrent source pack it plays torrent streams on the phone (libtorrent + libmpv with software HEVC decoding). Make sure what you stream is legal where you live.</p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, audio, memory card.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-torrens</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-torrens/harbour-torrens-0.3.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 5.0 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-torrens-0.3.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>30.9 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="tubus">
       <header>
         <img src="icons/tubus.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Tubus</h3><p class="tag">YouTube client</p><p class="meta">v0.4.0 <span class="chip ">Unofficial</span></p></div>
+        <div><h3>Tubus</h3><p class="tag">YouTube client</p><p class="meta">v0.4.0 <span class="chip ">Unofficial</span><span class="chip warn">Sandbox off</span></p></div>
       </header>
       <p class="desc">Home, Shorts, channels, playlists, history and downloads. Can use the YouTube session from the Sailfish Browser. yt-dlp is optional (downloaded from Settings, not bundled).</p>
+      <p class="jail off"><strong>Sailjail: sandbox off</strong>, because it signs in with the Sailfish Browser&#x27;s YouTube session (cookies) and plays through a local 127.0.0.1 proxy.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-tubus</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-tubus/harbour-tubus-0.4.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-tubus-0.4.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.2 MB</small></span></a></div></div></div>
     </article>
     <article class="app" id="volatus">
       <header>
         <img src="icons/volatus.png" width="86" height="86" alt="" loading="lazy">
-        <div><h3>Volatus</h3><p class="tag">Live flight tracker</p><p class="meta">v1.6.0 </p></div>
+        <div><h3>Volatus</h3><p class="tag">Live flight tracker</p><p class="meta">v1.6.0 <span class="chip ok">Sandboxed</span></p></div>
       </header>
       <p class="desc">Nearby aircraft on an OpenStreetMap view from community ADS-B data (adsb.lol, with OpenSky Network as a fallback): details, routes, search, favourites and emergency squawks. <strong>Not for navigation.</strong></p>
+      <p class="jail ok"><strong>Sailjail: sandboxed.</strong> Allowed: internet, location.</p>
       <div class="pkgs"><div class="pkg"><div class="pkgname"><code>harbour-volatus</code></div><div class="btns"><a class="btn primary" href="https://github.com/ahjolinna/SFOS-apps/raw/main/harbour-volatus/harbour-volatus-1.6.0-1.aarch64.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download<small>RPM · 0.2 MB</small></span></a><a class="btn" href="https://github.com/ahjolinna/SFOS-apps/releases/download/2026-11-09-latin/harbour-volatus-1.6.0-1.src.rpm" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Source RPM<small>0.2 MB</small></span></a></div></div></div>
     </article>
   </div>
@@ -218,8 +236,9 @@ footer { color: var(--muted); font-size: .9rem; padding: 40px 0 56px; }
     <div class="box">
       <p>Apps marked unofficial use public or undocumented interfaces of the services they connect to,
         and can stop working whenever those services change.</p>
-      <p>Several apps turn off Sailfish OS app sandboxing (Sailjail) because they need local stream
-        proxies, other apps' data or game controllers.</p>
+      <p><strong>Sailjail</strong> is Sailfish OS's app sandbox. Most of these apps run inside it with only
+        the permissions listed on their card. Arena, Ludus and Tubus turn it off (each card says why):
+        they can then read and write all your files, like any app outside the sandbox.</p>
       <p>Other Sailfish OS 5 phones (aarch64) may work too, but the apps are only tested on the Jolla Phone 2026.</p>
     </div>
     <div class="box" id="source">

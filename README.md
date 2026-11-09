@@ -34,22 +34,22 @@ on the Jolla Phone 2026.
 
 ## The apps
 
-| App | What it is |
-|---|---|
-| [Acta](harbour-acta/) | Ampparit.com news headline reader (Finnish news) |
-| [Arena](harbour-arena/) | Game launcher and performance monitor, with game mode and an optional HUD |
-| [Calor](harbour-calor/) | Adult video catalog client. **18+ only** |
-| [Collegium](harbour-collegium/) | Discord client: servers, direct messages, notifications |
-| [Fluxus](harbour-fluxus/) | Stremio add-on client with optional torrent streaming |
-| [Interpres](harbour-interpres/) | On-device AI translator (Qwen2.5 models, text stays on the phone) |
-| [Ludus](harbour-ludus/) | Classic games player (libretro emulators) with RomM support |
-| [Oraculum](harbour-oraculum/) | On-device AI chat (Qwen2.5 models with llama.cpp) |
-| [Scintilla](harbour-scintilla/) | Twitch client with chat |
-| [Statio](harbour-statio/) | Offline public-transport timetables for Finnish cities |
-| [Tabula](harbour-tabula/) | Manga reader (MangaDex) |
-| [Torrens](harbour-torrens/) | Anime catalog (AniList) with optional torrent streaming |
-| [Tubus](harbour-tubus/) | YouTube client |
-| [Volatus](harbour-volatus/) | Live flight tracker (ADS-B) on a map |
+| App | What it is | Sailjail |
+|---|---|---|
+| [Acta](harbour-acta/) | Ampparit.com news headline reader (Finnish news) | Sandboxed: internet, web view |
+| [Arena](harbour-arena/) | Game launcher and performance monitor, with game mode and an optional HUD | **Off**: lists Android games |
+| [Calor](harbour-calor/) | Adult video catalog client. **18+ only** | Sandboxed: internet, audio |
+| [Collegium](harbour-collegium/) | Discord client: servers, direct messages, notifications | Sandboxed: internet, audio, web view, Secrets |
+| [Fluxus](harbour-fluxus/) | Stremio add-on client with optional torrent streaming | Sandboxed: internet, audio, memory card |
+| [Interpres](harbour-interpres/) | On-device AI translator (Qwen2.5 models, text stays on the phone) | Sandboxed: internet |
+| [Ludus](harbour-ludus/) | Classic games player (libretro emulators) with RomM support | **Off**: controllers, games in any folder |
+| [Oraculum](harbour-oraculum/) | On-device AI chat (Qwen2.5 models with llama.cpp) | Sandboxed: internet, Documents, Downloads, Pictures |
+| [Scintilla](harbour-scintilla/) | Twitch client with chat | Sandboxed: internet, audio, Secrets |
+| [Statio](harbour-statio/) | Offline public-transport timetables for Finnish cities | Sandboxed: internet, location |
+| [Tabula](harbour-tabula/) | Manga reader (MangaDex) | Sandboxed: internet, Documents, Downloads |
+| [Torrens](harbour-torrens/) | Anime catalog (AniList) with optional torrent streaming | Sandboxed: internet, audio, memory card |
+| [Tubus](harbour-tubus/) | YouTube client | **Off**: browser session, local proxy |
+| [Volatus](harbour-volatus/) | Live flight tracker (ADS-B) on a map | Sandboxed: internet, location |
 
 ### Acta
 Headlines from Ampparit.com: top stories, most read, most voted and latest, with
@@ -134,8 +134,11 @@ squawks. **Not for navigation.**
 
 - Apps marked unofficial use public or undocumented interfaces of the services they
   connect to. They can stop working whenever those services change.
-- Several apps turn off Sailfish OS app sandboxing (Sailjail) because they need
-  local stream proxies, other apps' data or game controllers.
+- **Sailjail** is the Sailfish OS app sandbox. Most apps run inside it with only the
+  permissions in the table above. Arena, Ludus and Tubus turn it off: Arena to list
+  and launch Android games, Ludus to read game controllers and games from any folder,
+  Tubus to use the Sailfish Browser's YouTube session and a local playback proxy.
+  Outside the sandbox an app can read and write all your files.
 - These are RPM packages only; no source code is in this repository.
 
 ## Source code
