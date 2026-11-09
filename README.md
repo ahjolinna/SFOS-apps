@@ -38,6 +38,7 @@ on the Jolla Phone 2026.
 |---|---|---|
 | [Acta](harbour-acta/) | Ampparit.com news headline reader (Finnish news) | Sandboxed: internet, web view |
 | [Arena](harbour-arena/) | Game launcher and performance monitor, with game mode and an optional HUD | **Off**: lists Android games |
+| [Binarius](harbour-binarius/) | Binary code translator: text to and from binary, hex, octal, decimal, Base64, Morse | Sandboxed: no permissions |
 | [Calor](harbour-calor/) | Adult video catalog client. **18+ only** | Sandboxed: internet, audio |
 | [Collegium](harbour-collegium/) | Discord client: servers, direct messages, notifications | Sandboxed: internet, audio, web view, Secrets |
 | [Fluxus](harbour-fluxus/) | Stremio add-on client with optional torrent streaming | Sandboxed: internet, audio, memory card |
@@ -64,6 +65,12 @@ turn on Do Not Disturb, the silent profile, keep the screen on and lock brightne
 - `harbour-arena-hud` (optional, needs **Patchmanager**): an on-screen overlay with
   FPS, CPU, GPU, temperature and battery over any app, Android games included.
   Activate "Arena performance HUD" in Patchmanager afterwards.
+
+### Binarius
+Translates as you type between text and binary, hexadecimal, octal and decimal codes,
+Base64 and Morse code, in any direction (text as UTF-8, so ä and emoji work). Copy,
+paste, swap and history; a converter for whole numbers of any size; an ASCII table.
+Fully offline, with no permissions.
 
 ### Calor
 **Adults only (18+).** Browses public catalogs of adult video sites and plays videos
