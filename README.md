@@ -5,7 +5,7 @@ Unofficial apps for **Sailfish OS 5**, built with the **Jolla Phone 2026** in mi
 packages, one folder per app.
 
 > [!WARNING]
-> **These apps were made with AI** (Claude, Anthropic's AI assistant), with a human
+> **These apps were made with AI**: Claude (Anthropic) and Grok (xAI), with a human
 > testing them on a real Jolla Phone 2026. Some are well used and quite usable, others
 > are early or experimental. Expect bugs, rough edges and missing features.
 > **Use at your own discretion**: back up anything that matters, and read the notes
